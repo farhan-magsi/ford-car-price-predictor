@@ -35,17 +35,17 @@ def save_preprocessing_objects(scaler, label_encoders, model=None):
     """Save preprocessing objects and model"""
     os.makedirs('models', exist_ok=True)
     
-    joblib.dump(scaler, 'models/scaler.pkl')
-    joblib.dump(label_encoders, 'models/label_encoders.pkl')
+    joblib.dump(scaler, 'scaler.pkl')
+    joblib.dump(label_encoders, 'label_encoders.pkl')
     
     if model:
-        joblib.dump(model, 'models/model.pkl')
+        joblib.dump(model, 'model.pkl')
 
 def load_preprocessing_objects():
     """Load preprocessing objects"""
-    scaler = joblib.load('models/scaler.pkl')
-    label_encoders = joblib.load('models/label_encoders.pkl')
-    model = joblib.load('models/model.pkl') if os.path.exists('models/model.pkl') else None
+    scaler = joblib.load('scaler.pkl')
+    label_encoders = joblib.load('label_encoders.pkl')
+    model = joblib.load('model.pkl') if os.path.exists('model.pkl') else None
     return scaler, label_encoders, model
 
 def preprocess_input(input_data, scaler, label_encoders):
